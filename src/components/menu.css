@@ -1,0 +1,24 @@
+.context-menu {
+  position: fixed;
+  width: fit-content;
+  padding-block: 0.6rem;
+  background-color: white;
+  border: 1px solid #d3d3d3;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+.context-menu__menu-item {
+  cursor: pointer;
+  display: block;
+  white-space: nowrap;
+  text-align: left;
+  padding: 0.6rem 1.2rem;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.context-menu__menu-item:hover {
+  background-color: #dadada;
+  color: #252525;
+}
