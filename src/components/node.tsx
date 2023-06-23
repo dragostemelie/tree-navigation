@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { coundChildNodes } from '../utils/nodes';
+import { countChildNodes } from '../utils/nodes';
+import { useAppDispatch } from '../store';
+import { showMenu } from '../store/reducer';
+
+import { MinusIcon, MoreIcon, PlusIcon } from '../assets/icons';
 import './node.css';
 
 import type { NodeElement } from '../types';
-
-import { MinusIcon, MoreIcon, PlusIcon } from '../assets/icons';
-import { useAppDispatch } from '../store';
-import { showMenu } from '../store/reducer';
 
 interface Props {
   node: NodeElement;
@@ -16,7 +16,7 @@ export const NodeComponent = ({ node }: Props) => {
   const [expanded, setExpanded] = useState(false);
   const dispatch = useAppDispatch();
 
-  const count = coundChildNodes(node);
+  const count = countChildNodes(node);
 
   const toggleExpand = () => {
     setExpanded(!expanded);
@@ -28,6 +28,7 @@ export const NodeComponent = ({ node }: Props) => {
       node,
       position: { x: right, y: bottom },
     };
+    console.log(contextMenu);
     dispatch(showMenu(contextMenu));
   };
 

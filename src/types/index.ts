@@ -9,12 +9,12 @@ export type NodeElement = NodeData & {
 };
 
 export type ContextMenu = {
-  node: NodeData;
+  node: NodeElement;
   position: { x: number; y: number };
 };
 
 export type NodeModal = {
-  node: NodeData;
+  node: NodeElement;
   type: 'CREATE' | 'UPDATE' | 'DELETE';
 };
 

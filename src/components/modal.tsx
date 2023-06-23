@@ -5,6 +5,7 @@ import { useClickedOutside } from '../hooks/useClickedOutside';
 import './modal.css';
 
 import type { NodeModal } from '../types';
+import { getNestedIds } from '../utils/nodes';
 
 export const Modal = ({ node, type }: NodeModal) => {
   const [nodeName, setNodeName] = useState<string>(node.name);
@@ -21,7 +22,7 @@ export const Modal = ({ node, type }: NodeModal) => {
       case 'UPDATE':
         return 'Update node name:';
       default:
-        return `Delete node ${node.name}?`;
+        return `Delete node <${node.name}> and all it's child nodes?`;
     }
   };
 
@@ -67,7 +68,7 @@ export const Modal = ({ node, type }: NodeModal) => {
         );
         break;
       default:
-        dispatch(remove(node.id));
+        dispatch(remove(getNestedIds(node)));
         break;
     }
     dispatch(hideModal());
@@ -96,7 +97,9 @@ export const Modal = ({ node, type }: NodeModal) => {
           )}
         </label>
         <div className="modal__buttons">
-          <button onClick={handleConfirm}>{getButtonText()}</button>
+          <button onClick={handleConfirm} disabled={nodeName.length === 0}>
+            {getButtonText()}
+          </button>
           <button onClick={handleCancel}>Cancel</button>
         </div>
       </div>

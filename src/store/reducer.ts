@@ -29,9 +29,9 @@ const nodesSlice = createSlice({
         else return node;
       }),
     }),
-    remove: (state, action: PayloadAction<number>) => ({
+    remove: (state, action: PayloadAction<number[]>) => ({
       ...state,
-      nodes: state.nodes.filter(node => node.id !== action.payload),
+      nodes: state.nodes.filter(node => !action.payload.includes(node.id)),
     }),
     // Context menu
     showMenu: (state, action: PayloadAction<ContextMenu>) => ({

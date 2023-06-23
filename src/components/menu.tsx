@@ -16,8 +16,8 @@ export const Menu = ({ node, position }: ContextMenu) => {
     const modalData: NodeModal = {
       node:
         type === 'CREATE'
-          ? { id: new Date().valueOf(), name: '', parent_node: node.id }
-          : { id: node.id, name: node.name, parent_node: node.parent_node },
+          ? { id: new Date().valueOf(), name: '', parent_node: node.id, children: [] }
+          : node,
       type,
     };
 
