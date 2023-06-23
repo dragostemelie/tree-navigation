@@ -1,10 +1,17 @@
 export const PlusIcon = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M19 12.998H13V18.998H11V12.998H5V10.998H11V4.99805H13V10.998H19V12.998Z"
-        fill="currentColor"
-      />
+      <g clipPath="url(#clip0_151_17)">
+        <path
+          d="M12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0ZM10.084 5.23682H13.916V10.084H18.7632V13.916H13.916V18.7632H10.084V13.916H5.23682V10.084H10.084V5.23682Z"
+          fill="currentColor"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_151_17">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </svg>
   );
 };
@@ -12,10 +19,21 @@ export const PlusIcon = () => {
 export const MinusIcon = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M19 12.998H5V10.998H19V12.998Z" fill="currentColor" />
+      <g clipPath="url(#clip0_151_19)">
+        <path
+          d="M12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0ZM5.10938 10.0488H18.8921V13.9511H5.10938V10.0488Z"
+          fill="currentColor"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_151_19">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </svg>
   );
 };
+
 export const MoreIcon = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

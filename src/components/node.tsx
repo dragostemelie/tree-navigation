@@ -32,7 +32,7 @@ export const NodeComponent = ({ node }: Props) => {
   };
 
   return (
-    <div className="node">
+    <div className={`node ${expanded && node.children.length > 0 ? 'node--expanded' : ''}`}>
       <div className="node__wrapper">
         <div
           className={`node__icon ${node.children.length === 0 ? 'node__icon--disabled' : ''}`}

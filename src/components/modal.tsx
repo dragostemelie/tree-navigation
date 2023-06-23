@@ -1,13 +1,14 @@
-import React, { useRef, useState } from 'react';
-
-import './modal.css';
+import React, { useRef, useState, useEffect } from 'react';
 import { useAppDispatch } from '../store';
 import { create, hideModal, remove, update } from '../store/reducer';
-import { NodeModal } from '../types';
 import { useClickedOutside } from '../hooks/useClickedOutside';
+import './modal.css';
+
+import type { NodeModal } from '../types';
 
 export const Modal = ({ node, type }: NodeModal) => {
   const [nodeName, setNodeName] = useState<string>(node.name);
+
   const dispatch = useAppDispatch();
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -20,7 +21,7 @@ export const Modal = ({ node, type }: NodeModal) => {
       case 'UPDATE':
         return 'Update node name:';
       default:
-        return `Delete node with id ${node.id}?`;
+        return `Delete node ${node.name}?`;
     }
   };
 
@@ -38,6 +39,13 @@ export const Modal = ({ node, type }: NodeModal) => {
   const handleNodeName = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     setNodeName(value);
+  };
+
+  const handleEnterKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.code === 'Enter') {
+      setNodeName(event.currentTarget.value);
+      handleConfirm();
+    }
   };
 
   const handleConfirm = () => {
@@ -69,12 +77,23 @@ export const Modal = ({ node, type }: NodeModal) => {
     dispatch(hideModal());
   };
 
+  useEffect(() => {
+    modalRef.current?.querySelector('input')?.focus();
+  }, []);
+
   return (
     <div className="modal">
       <div ref={modalRef} className="modal__content">
         <label style={{ alignItems: `${type === 'DELETE' ? 'center' : 'flex-start'}` }}>
           <span>{getModalTitle()}</span>
-          {type !== 'DELETE' && <input type="text" value={nodeName} onChange={handleNodeName} />}
+          {type !== 'DELETE' && (
+            <input
+              type="text"
+              value={nodeName}
+              onChange={handleNodeName}
+              onKeyDown={handleEnterKey}
+            />
+          )}
         </label>
         <div className="modal__buttons">
           <button onClick={handleConfirm}>{getButtonText()}</button>

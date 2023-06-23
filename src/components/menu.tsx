@@ -13,7 +13,7 @@ export const Menu = ({ node, position }: ContextMenu) => {
   useClickedOutside(menuRef, () => dispatch(hideMenu()));
 
   const handleShowModal = (type: NodeModal['type']) => {
-    const nodeModal: NodeModal = {
+    const modalData: NodeModal = {
       node:
         type === 'CREATE'
           ? { id: new Date().valueOf(), name: '', parent_node: node.id }
@@ -21,7 +21,7 @@ export const Menu = ({ node, position }: ContextMenu) => {
       type,
     };
 
-    dispatch(showModal(nodeModal));
+    dispatch(showModal(modalData));
     dispatch(hideMenu());
   };
 
