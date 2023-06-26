@@ -28,7 +28,6 @@ export const NodeComponent = ({ node }: Props) => {
       node,
       position: { x: right, y: bottom },
     };
-    console.log(contextMenu);
     dispatch(showMenu(contextMenu));
   };
 

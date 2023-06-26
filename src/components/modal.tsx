@@ -54,16 +54,18 @@ export const Modal = ({ node, type }: NodeModal) => {
       case 'CREATE':
         dispatch(
           create({
-            ...node,
+            id: node.id,
             name: nodeName,
+            parent_node: node.parent_node,
           })
         );
         break;
       case 'UPDATE':
         dispatch(
           update({
-            ...node,
+            id: node.id,
             name: nodeName,
+            parent_node: node.parent_node,
           })
         );
         break;
